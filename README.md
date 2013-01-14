@@ -3,7 +3,7 @@ EExcelView
 
 [Forum thread](http://www.yiiframework.com/forum/index.php/topic/18119-extensioneexcelview "Forum thread")
 
-This is my first extension ever :). It is a wrapper of [PHPExcel](http://phpexcel.codeplex.com/ "PHPExcel") that extends from CGrivView. The main idea is to easily export already defined grids to excel files. You can use the same array of parameters that the grid uses plus an aditional specific params, which are:
+This is my first extension ever :). It is a wrapper of [PHPExcel](http://phpexcel.codeplex.com/ "PHPExcel") that extends from CGridView. The main idea is to easily export already defined grids to excel files. You can use the same array of parameters that the grid uses plus an aditional specific params, which are:
 
 ##Configuraiton
 
@@ -34,10 +34,10 @@ The usage is like using CGridView:
 ~~~
 [php]
 $this->widget('EExcelView', array(
-     'dataProvider'=> $dataprovider,
+     'dataProvider'=> $dataProvider,
      'title'=>'Title',
      'autoWidth'=>false,
-      ..... other options 
+      //..... other options 
 ));
 ~~~
 
