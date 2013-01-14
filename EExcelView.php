@@ -1,11 +1,13 @@
 <?php
-Yii::import('zii.widgets.grid.CGridView');
 
 /**
  * @author Nikola Kostadinov
  * @license MIT License
  * @version 0.3
  */
+
+Yii::import('zii.widgets.grid.CGridView');
+
 class EExcelView extends CGridView
 {
     //gridMode values
@@ -180,8 +182,9 @@ class EExcelView extends CGridView
 
             $a++;
             $cell = $this->objPHPExcel->getActiveSheet()->setCellValue($this->columnName($a) . ($row + 2), strip_tags($value), true);
-            if (is_callable($this->onRenderDataCell))
+            if (is_callable($this->onRenderDataCell)) {
                 call_user_func_array($this->onRenderDataCell, array($cell, $data[$row], $value));
+            }
         }
     }
 
@@ -209,15 +212,17 @@ class EExcelView extends CGridView
             $this->renderFooter($row);
 
             //set auto width
-            if ($this->autoWidth)
-                foreach ($this->columns as $n => $column)
+            if ($this->autoWidth) {
+                foreach ($this->columns as $n => $column) {
                     $this->objPHPExcel->getActiveSheet()->getColumnDimension($this->columnName($n + 1))->setAutoSize(true);
+                }
+            }
             //create writer for saving
             $objWriter = PHPExcel_IOFactory::createWriter($this->objPHPExcel, $this->exportType);
-            if (!$this->stream)
+            if (!$this->stream) {
                 $objWriter->save($this->filename);
-            else //output to browser
-            {
+            } else {
+                //output to browser
                 if (!$this->filename) {
                     $this->filename = $this->title;
                 }
@@ -252,9 +257,9 @@ class EExcelView extends CGridView
             return chr(ord('A') + $index);
         } else if ($index > 25) {
             return ($this->columnName($index / 26)) . ($this->columnName($index % 26 + 1));
-        } else {
-            throw new CException("Invalid Column # " . ($index + 1));
         }
+
+        throw new CException("Invalid Column # " . ($index + 1));
     }
 
     public function renderExportButtons()
