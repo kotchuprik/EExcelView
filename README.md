@@ -21,8 +21,8 @@ Other params
 -  disablePaging - if set to true, it will export all data (default true)
 -  filename - the full path of the filename to export to. If null it will stream to the browser
 -  stream - true/false stream to browser or save to file.
--  grid_mode - Whether to display grid or to export it to selected format. Possible values(grid, export)
--  grid_mode_var - defaults to 'grid_mode' GET var for the grid mode
+-  gridMode - Whether to display grid or to export it to selected format. Possible values(grid, export)
+-  gridModeVar - defaults to 'gridMode' GET var for the grid mode
 
 ##Requirements
 
@@ -61,7 +61,7 @@ Mainly bug fix release. I also modified the extension to be able to run in conso
   	$factory = new CWidgetFactory();	
 		$widget = $factory->createWidget($this, 'EExcelView', array(
 			'dataProvider'=>$provider,
-			'grid_mode'=>'export',
+			'gridMode'=>'export',
 			'title'=>'Title',
 			'filename'=>'report.xlsx',
 			'stream'=>false,
@@ -82,7 +82,7 @@ Major change EExceView now can fully replace CGridView. There is an optional par
  
 - Added: "gridmode" possible values(grid, export). When set to grid acts like normal grid.
 - Added: "libPath" property, defaults to "application.extensions.phpexcel.Classes.PHPExcel". The location of PHP Excel lib.
-- Added: "grid_mode_var" the GET variable name which can be used to change the grid mode. defaults to "grid_mode"
+- Added: "gridModeVar" the GET variable name which can be used to change the grid mode. defaults to "gridMode"
 - Added: new template item "exportbuttons" which renders export links. Example: 
 ....
 'template'=>"{summary}\n{items}\n{exportbuttons}\n{pager}"
